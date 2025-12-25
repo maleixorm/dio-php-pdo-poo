@@ -16,7 +16,7 @@ class Produto
         }
     }
 
-    public function list()
+    public function list():void
     {
         $sql = "SELECT * FROM produtos";
 
@@ -27,7 +27,7 @@ class Produto
         }
     }
 
-    public function insert()
+    public function insert():int
     {
         $sql = "INSERT INTO produtos(descricao) VALUES (?)";
 
@@ -36,7 +36,7 @@ class Produto
         $prepare->bindParam(1, $_GET['descricao']);
         $prepare->execute();
 
-        echo $prepare->rowCount();
+        return $prepare->rowCount();
     }
 
     public function update()
