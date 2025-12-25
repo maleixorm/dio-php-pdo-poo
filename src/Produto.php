@@ -39,13 +39,29 @@ class Produto
         return $prepare->rowCount();
     }
 
-    public function update()
+    public function update():int
     {
-        return true;
+        $sql = "UPDATE produtos SET descricao = ? WHERE id = ?";
+
+        $prepare = $this->conexao->prepare($sql);
+
+        $prepare->bindParam(1, $_GET['descricao']);
+        $prepare->bindParam(2, $_GET['id']);
+
+        $prepare->execute();
+
+        return $prepare->rowCount();
     }
 
-    public function delete()
+    public function delete():int
     {
-        return true;
+        $sql = 'DELETE FROM produtos WHERE id = ?';
+
+        $prepare = $this->conexao->prepare($sql);
+
+        $prepare->bindParam(1, $_GET['id']);
+        $prepare->execute();
+
+        return $prepare->rowCount();
     }
 }
