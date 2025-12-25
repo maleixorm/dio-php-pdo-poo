@@ -29,7 +29,14 @@ class Produto
 
     public function insert()
     {
-        return true;
+        $sql = "INSERT INTO produtos(descricao) VALUES (?)";
+
+        $prepare = $this->conexao->prepare($sql);
+
+        $prepare->bindParam(1, $_GET['descricao']);
+        $prepare->execute();
+
+        echo $prepare->rowCount();
     }
 
     public function update()
