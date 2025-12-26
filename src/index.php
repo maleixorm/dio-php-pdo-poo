@@ -30,7 +30,12 @@ switch ($_GET['operacao']) {
         break;
     
     case 'delete':
-        # code...
+        $status = $produto->delete(3);
+        if (!$status) {
+            echo "Não foi possível executar a operação!";
+            return false;
+        }
+        echo "Registro removido com sucesso!";
         break;
     
     default:
