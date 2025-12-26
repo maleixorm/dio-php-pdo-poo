@@ -12,11 +12,21 @@ switch ($_GET['operacao']) {
         break;
     
     case 'insert':
-        
+        $status = $produto->insert("Novo Produto de Teste");
+        if (!$status) {
+            echo "Não foi possível executar a operação";
+            return false;
+        }
+        echo "Registro inserido com sucesso!";
         break;
     
     case 'update':
-        # code...
+        $status = $produto->update("Produto de Teste Atualizado", 1);
+        if (!$status) {
+            echo "Não foi possível executar a operação";
+            return false;
+        }
+        echo "Registro atualizado com sucesso!";
         break;
     
     case 'delete':
